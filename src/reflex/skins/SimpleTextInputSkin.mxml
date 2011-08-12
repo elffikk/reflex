@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rx:Skin xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:rx="http://rx.reflex.io/2010"
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Metadata>
+		[HostComponent("reflex.components.SimpleTextInput")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import reflex.binding.DataChange;
+			
+			protected var _textFormat:TextFormat = new TextFormat("Arial", 12, 0x000000, null);
+			
+			protected var _backgroundColor:uint = 0xFFFFFF;
+			protected var _borderThickness:int = 1;
+			protected var _borderColor:uint = 0xCCCCCC;
+			
+			public static var TEXT:String = "skinText";
+			
+			[Bindable("textFormatChanged")]
+			public function get textFormat():TextFormat { return _textFormat; }
+			public function set textFormat(value:TextFormat):void { 
+				DataChange.change(this, "textFormat", _textFormat, _textFormat = value);
+			}
+			
+			[Bindable("backgroundColorChange")]
+			public function get backgroundColor():uint { return _backgroundColor; }
+			public function set backgroundColor(value:uint):void {
+				DataChange.change(this, "backgroundColor", _backgroundColor, _backgroundColor = value);
+			}
+			
+			[Bindable("borderThicknessChange")]
+			public function get borderThickness():int { return _borderThickness; }
+			public function set borderThickness(value:int):void {
+				DataChange.change(this, "borderThickness", _borderThickness, _borderThickness = value);
+			}
+			
+			[Bindable("borderColorChange")]
+			public function get borderColor():uint { return _borderColor; }
+			public function set borderColor(value:uint):void {
+				DataChange.change(this, "borderColor", _borderColor, _borderColor = value);
+			}
+			
+			[Bindable("colorChange")]
+			public function get color():uint { return _textFormat.color as uint; }
+			public function set color(value:uint):void {
+				DataChange.change(this, "color", _textFormat.color, _textFormat.color = value);
+				textField.defaultTextFormat = _textFormat;
+			}
+			
+			[Bindable("fontFamilyChange")]
+			public function get fontFamily():String { return _textFormat.font; }
+			public function set fontFamily(value:String):void {
+				DataChange.change(this, "fontFamily", _textFormat.font, _textFormat.font = value);
+				textField.defaultTextFormat = _textFormat;
+			}
+			
+			[Bindable("fontWeightChange")]
+			public function get fontWeight():String { return _textFormat.bold ? 'bold' : null; }
+			public function set fontWeight(value:String):void {
+				DataChange.change(this, "fontWeight", _textFormat.bold, _textFormat.bold = (value == 'bold') ? true : '');
+				textField.defaultTextFormat = _textFormat;
+			}
+			
+			[Bindable("fontSizeChange")]
+			public function get fontSize():int { return _textFormat.size as int; }
+			public function set fontSize(value:int):void {
+				DataChange.change(this, "fontSize", _textFormat.size, _textFormat.size = value);
+				textField.defaultTextFormat = _textFormat;
+			}
+			
+			override public function set target(value:Sprite):void {
+				super.target = value;
+				textField.addEventListener(MouseEvent.CLICK, handleClick, false, 0, true);
+				
+			}
+			
+			public function handleClick(event:MouseEvent):void {
+				trace("textField event: " + event.target);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<rx:layout>
+		<rx:BasicLayout />
+	</rx:layout>
+	
+	<rx:Rect left="0" top="0" right="0" bottom="0">
+		<rx:fill>
+			<rx:SolidColor color="{backgroundColor}" />
+		</rx:fill>
+		<rx:stroke>
+			<rx:SolidColorStroke weight="{borderThickness}" color="{borderColor}" />
+		</rx:stroke>
+	</rx:Rect>
+	
+	<rx:TextFieldDisplay id="textField" text="" type="{TextFieldType.INPUT}" />
+	
+</rx:Skin>

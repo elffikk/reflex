@@ -3,18 +3,33 @@
 	
 	<!-- components -->
 	<component id="Component" class="reflex.components.Component"/>
-	<component id="ListDefinition" class="reflex.components.ListDefinition"/>
-	<component id="ButtonDefinition" class="reflex.components.ButtonDefinition"/>
-	<component id="ListItemDefinition" class="reflex.components.ListItemDefinition"/>
-	<component id="ScrollerDefinition" class="reflex.components.ScrollerDefinition" />
-	<component id="SliderDefinition" class="reflex.components.SliderDefinition"/>
+	<component id="SliderComponent" class="reflex.components.SliderComponent"/>
+	<component id="Button" class="reflex.components.Button" />
+	<component id="CheckBox" class="reflex.components.CheckBox" />
+	<component id="RadioButton" class="reflex.components.RadioButton" />
+	<component id="HSlider" class="reflex.components.HSlider" />
+	<component id="VSlider" class="reflex.components.VSlider" />
+	<component id="Stepper" class="reflex.components.Stepper" />
+	<component id="HScrollBar" class="reflex.components.HScrollBar" />
+	<component id="VScrollBar" class="reflex.components.VScrollBar" />
+	<component id="List" class="reflex.components.List" />
+	<component id="ListItem" class="reflex.components.ListItem"/>
+	<component id="Scroller" class="reflex.components.Scroller" />
+	<component id="TextInput" class="reflex.components.TextInput" />
+	<component id="TextArea" class="reflex.components.TextArea" />
 	
 	<!-- containers -->
 	<component id="Container" class="reflex.containers.Container"/>
+	<component id="Application" class="reflex.containers.Application"/>
+	<component id="Group" class="reflex.containers.Group" />
+	<component id="HGroup" class="reflex.containers.HGroup"/>
+	<component id="VGroup" class="reflex.containers.VGroup"/>
 	
 	<!-- skins -->
 	<component id="Skin" class="reflex.skins.Skin"/>
 	<component id="MovieClipSkin" class="reflex.skins.MovieClipSkin"/>
+	<component id="ListSkin" class="reflex.skins.ListSkin"/>
+	
 	
 	<!-- behaviors -->
 	<component id="CompositeBehavior" class="reflex.behaviors.CompositeBehavior"/>
@@ -26,6 +41,7 @@
 	<component id="StepBehavior" class="reflex.behaviors.StepBehavior"/>
 	<component id="DragStepBehavior" class="reflex.behaviors.DragStepBehavior"/>
 	<component id="TextAreaBehavior" class="reflex.behaviors.TextAreaBehavior"/>
+	<component id="TouchScrollBehavior" class="reflex.behaviors.TouchScrollBehavior" />
 	
 	<!-- layouts -->
 	<component id="ILayout" class="reflex.layouts.ILayout"/>
@@ -73,10 +89,12 @@
 	<component id="BitmapFillMode" class="mx.graphics.BitmapFillMode" />
 	
 	<!-- states -->
-	<!--<component id="State" class="mx.states.State" />-->
+	<component id="State" class="mx.states.State" />
 	<component id="AddItems" class="mx.states.AddItems" />
 	<component id="SetProperty" class="mx.states.SetProperty" />
 	<component id="SetStyle" class="mx.states.SetStyle" />
+	<component id="IOverride" class="mx.states.IOverride" />
+	
 	
 	<!-- text -->
 	<component id="Label" class="reflex.text.Label" />

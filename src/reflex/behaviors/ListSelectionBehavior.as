@@ -19,7 +19,7 @@ package reflex.behaviors
 		
 		protected var renderers:Array = [];
 		
-		[Bindable(event="containerChanged")]
+		[Bindable(event="containerChange")]
 		[Binding(target="target.skin.container")]
 		public function get container():DisplayObjectContainer { return _container; }
 		public function set container(value:DisplayObjectContainer):void {
@@ -27,7 +27,7 @@ package reflex.behaviors
 			DataChange.change(this, "container", _container, _container = value);
 		}
 		
-		[Bindable(event="selectionChanged")]
+		[Bindable(event="selectionChange")]
 		[Binding(target="target.selection")]
 		public function get selection():ISelection{ return _selection; }
 		public function set selection(value:ISelection):void {
@@ -80,12 +80,16 @@ package reflex.behaviors
 			} else {
 				_selection.selectedItem = renderer.data;
 			}
-			
-			// making wild assumptions about the existence of selected properties here
+			target.dispatchEvent(new Event('itemClick'))
+		}
+		
+		[EventListener(event="selectedItemChange", target="selection")]
+		public function setSelection(event:Event = null):void
+		{
+			//making wild assumptions about the existence of selected properties here
 			for each(var r:Object in renderers) {
-				r.selected = false;
+				r.selected = (r.data == selection.selectedItem);
 			}
-			(renderer as Object).selected = true;
 		}
 		
 	}
