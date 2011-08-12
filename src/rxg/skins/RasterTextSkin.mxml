@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns="reflex.rxg.*" xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:binding="reflex.binding.*"
+	width="{labelDisplay.width}"
+	height="{labelDisplay.height}"
+	>
+	
+	<fx:Declarations>
+		<!-- component to skin -->
+		<!-- rect -->
+		<binding:Bind source="target.stroke" target="rect.stroke" />
+		<binding:Bind source="target.fill" target="rect.fill" />
+		<!-- label -->
+		<binding:Bind source="target.text" target="labelDisplay.text" />
+		<binding:Bind source="target.fontFamily" target="labelDisplay.fontFamily" />
+		<binding:Bind source="target.fontSize" target="labelDisplay.fontSize" />
+		<binding:Bind source="target.bold" target="labelDisplay.bold" />
+		<binding:Bind source="target.italic" target="labelDisplay.italic" />
+		<!-- skin to component -->
+		<binding:Bind source="labelDisplay" target="target.mask" />
+		
+		
+	</fx:Declarations>
+	
+	<!--
+		fontSize/5 is needed for from top and bottom for some letters
+		to be visible, like Yy Ii Pp Jj
+	-->
+	<Rect 
+		id="rect"	
+		top="{-(target as Object).fontSize/5}" 
+		bottom="{-(target as Object).fontSize/5}" 
+		left="0" 
+		right="0"
+		/>
+	
+	<rx:Label id="labelDisplay" cacheAsBitmap="true"/>
+	
+</Skin>
