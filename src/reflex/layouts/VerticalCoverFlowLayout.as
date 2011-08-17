@@ -1,6 +1,6 @@
 package reflex.layouts
 {
-	import com.theflashblog.util3d.SimpleZSorter;
+	//import com.theflashblog.util3d.SimpleZSorter;
 	
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
