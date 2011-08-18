@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rx:Application 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:mc="rxc.mc.*"
+	xmlns:components="com.bit101.components.*"
+	>
+	
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		@namespace rx "http://rx.reflex.io/2010";
+		@namespace mc "rxc.mc.*";
+		@namespace components "com.bit101.components.*";
+		
+		@font-face { 
+			src: url("assets/pf_ronda_seven.ttf"); 
+			fontFamily: "PF Ronda Seven";
+			embedAsCFF:true;
+			advancedAntiAliasing: true; 
+		}
+	</fx:Style>
+	
+	
+	<rx:layout>
+		<rx:VerticalLayout gap="5" horizontalAlign="center" verticalAlign="center" />
+	</rx:layout>
+		
+	<mc:PushButton label="Push button" />
+	<mc:PushButton label="Toggle button" toggle="true"/>
+	
+	<components:PushButton label="Push button" />
+	<components:PushButton label="Toggle button" toggle="true"/>
+	
+</rx:Application>

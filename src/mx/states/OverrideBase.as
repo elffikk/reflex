@@ -26,7 +26,10 @@ package mx.states
 		public function initializeFromObject(properties:Object):Object {
 			for (var p:String in properties)
 			{
-				this[p] = properties[p];
+				try{
+					this[p] = properties[p];
+				}
+				catch(err:Error){}
 			}
 			return Object(this);
 		}
