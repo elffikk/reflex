@@ -1,12 +1,11 @@
 package rxc.mc
 {
-	import mx.controls.Button;
-	
 	import reflex.behaviors.ButtonBehavior;
 	import reflex.binding.Bind;
 	import reflex.binding.DataChange;
 	import reflex.components.Component;
 	
+	import rxc.mc.behaviors.PushButtonBehavior;
 	import rxc.mc.skins.PushButtonSkin;
 	
 	public class PushButton extends Component
@@ -42,6 +41,7 @@ package rxc.mc
 			super();
 			this.buttonMode = true
 			this.behaviors.addItem( new ButtonBehavior(this))
+			this.behaviors.addItem( new PushButtonBehavior(this))
 			this.skin = new PushButtonSkin()
 			Bind.addBinding(this, 'skin.labelDisplay.text', this, 'label')
 		}
