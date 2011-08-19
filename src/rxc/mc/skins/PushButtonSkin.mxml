@@ -4,8 +4,14 @@
 	xmlns:s="library://ns.adobe.com/flex/spark" 
 	xmlns:mx="library://ns.adobe.com/flex/mx" 
 	xmlns="reflex.rxg.*" 
-	xmlns:rx="http://rx.reflex.io/2010"
+	xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:binding="reflex.binding.*"	
 	>
+	
+	<fx:Declarations>
+		<binding:Bind source="target.label" target="labelDisplay.text" />
+	</fx:Declarations>
+	
 	<states>
 		<s:State name="up" />
 		<s:State name="over" stateGroups="overStates" />
@@ -17,84 +23,89 @@
 		<s:State name="disabledAndSelected" stateGroups="selectedUpStates, disabledStates, selectedStates" />
 	</states>
 	
+	<Group 
+		buttonMode="true" 
+		alpha.disabledStates="0.5" 
+		mouseChildren.disabledStates="false" 
+		mouseEnabled.selectedStates="false"
+		>
+		<!-- background -->
+		<Rect top="0" bottom="0" left="0" right="0">
+			<filters>
+				<mx:DropShadowFilter
+					angle="45"
+					alpha="1"
+					strength="0.3"
+					quality="1"
+					distance="2"
+					color="#000000"
+					blurX="2"
+					blurY="2"
+					inner="true"
+					/>
+			</filters>
+			<fill>
+				<s:SolidColor color="#CCCCCC" />
+			</fill>		
+		</Rect>
 		
-	<!-- background -->
-	<Rect top="0" bottom="0" left="0" right="0">
-		<filters>
-			<mx:DropShadowFilter
-				angle="45"
-				alpha="1"
-				strength="0.3"
-				quality="1"
-				distance="2"
-				color="#000000"
-				blurX="2"
-				blurY="2"
-				inner="true"
-				/>
-		</filters>
-		<fill>
-			<s:SolidColor color="#CCCCCC" />
-		</fill>		
-	</Rect>
-	
-	<!-- face -->
-	<Rect top="1" bottom="1" left="1" right="1">
-		<filters>
-			<mx:DropShadowFilter
-				angle="45"
-				alpha="1"
-				strength="0.3"
-				quality="1"
-				distance="1"
-				color="{Style.DROPSHADOW}"
-				blurX="1"
-				blurY="1"
-				inner="false"
-				/>
-		</filters>
-		<filters.down>
-			<mx:DropShadowFilter
-				angle="45"
-				alpha="1"
-				strength="0.3"
-				quality="1"
-				distance="1"
-				color="{Style.DROPSHADOW}"
-				blurX="1"
-				blurY="1"
-				inner="true"
-				/>
-		</filters.down>
-		<filters.selectedStates>
-			<mx:DropShadowFilter
-				angle="45"
-				alpha="1"
-				strength="0.3"
-				quality="1"
-				distance="1"
-				color="{Style.DROPSHADOW}"
-				blurX="1"
-				blurY="1"
-				inner="true"
-				/>
-		</filters.selectedStates>
-		<fill>
-			<s:SolidColor color="{Style.BUTTON_FACE}" color.down="{Style.BUTTON_DOWN}"/>
-		</fill>
-	</Rect>
-	
-	<rx:Label
-		id="labelDisplay"
-		top="2" bottom="5" left="15" right="15"
-		fontFamily="{Style.fontName}"
-		fontSize="{Style.fontSize}"
-		color="{Style.LABEL_TEXT}"
-		embed="{Style.embedFonts}"		
-		mouseEnabled="false"
-		mouseChildren="false"
-		/>	
-	
-	
+		<!-- face -->
+		<Rect top="1" bottom="1" left="1" right="1">
+			<filters>
+				<mx:DropShadowFilter
+					angle="45"
+					alpha="1"
+					strength="0.3"
+					quality="1"
+					distance="1"
+					color="{Style.DROPSHADOW}"
+					blurX="1"
+					blurY="1"
+					inner="false"
+					/>
+			</filters>
+			<filters.down>
+				<mx:DropShadowFilter
+					angle="45"
+					alpha="1"
+					strength="0.3"
+					quality="1"
+					distance="1"
+					color="{Style.DROPSHADOW}"
+					blurX="1"
+					blurY="1"
+					inner="true"
+					/>
+			</filters.down>
+			<filters.selectedStates>
+				<mx:DropShadowFilter
+					angle="45"
+					alpha="1"
+					strength="0.3"
+					quality="1"
+					distance="1"
+					color="{Style.DROPSHADOW}"
+					blurX="1"
+					blurY="1"
+					inner="true"
+					/>
+			</filters.selectedStates>
+			<fill>
+				<s:SolidColor color="{Style.BUTTON_FACE}" color.down="{Style.BUTTON_DOWN}"/>
+			</fill>
+		</Rect>
+		
+		<rx:Label
+			id="labelDisplay"
+			top="2" bottom="5" left="15" right="15"
+			fontFamily="{Style.fontName}"
+			fontSize="{Style.fontSize}"
+			color="{Style.LABEL_TEXT}"
+			embed="{Style.embedFonts}"		
+			mouseEnabled="false"
+			mouseChildren="false"
+			bold="false"
+			/>
+	</Group>
 	
 </Skin>

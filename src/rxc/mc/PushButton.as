@@ -39,11 +39,9 @@ package rxc.mc
 		public function PushButton()
 		{
 			super();
-			this.buttonMode = true
 			this.behaviors.addItem( new ButtonBehavior(this))
 			this.behaviors.addItem( new PushButtonBehavior(this))
 			this.skin = new PushButtonSkin()
-			Bind.addBinding(this, 'skin.labelDisplay.text', this, 'label')
 		}
 	}
 }
