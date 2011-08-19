@@ -31,6 +31,8 @@
 	<mc:PushButton label="Push button" />
 	<mc:PushButton label="Toggle button" toggle="true"/>
 	
+	<mc:PushButton label="Toggle button" toggle="true" selected="true" enabled="false"/>
+	
 	<components:PushButton label="Push button" />
 	<components:PushButton label="Toggle button" toggle="true"/>
 	
