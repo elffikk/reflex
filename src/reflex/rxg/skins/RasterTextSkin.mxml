@@ -38,6 +38,6 @@
 		right="0"
 		/>
 	
-	<rx:Label id="labelDisplay" cacheAsBitmap="true"/>
+	<Label id="labelDisplay" cacheAsBitmap="true"/>
 	
 </Skin>

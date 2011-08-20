@@ -95,9 +95,9 @@
 			</fill>
 		</Rect>
 		
-		<rx:Label
+		<Label
 			id="labelDisplay"
-			top="2" bottom="5" left="15" right="15"
+			top="5" bottom="5" left="15" right="15"
 			fontFamily="{Style.fontName}"
 			fontSize="{Style.fontSize}"
 			color="{Style.LABEL_TEXT}"

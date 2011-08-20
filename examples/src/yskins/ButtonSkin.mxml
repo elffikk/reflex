@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns="reflex.rxg.*"
+	>	
+	<!-- upSkin -->
+	<Group>
+		<Path x="0.5" y="0.5" winding="nonZero" data="M62 23C62 24.6504 60.6499 26 59 26L3 26C1.34961 26 0 24.6504 0 23L0 3C0 1.34961 1.34961 0 3 0L59 0C60.6499 0 62 1.34961 62 3L62 23Z">
+			<fill>
+				<s:LinearGradient x="31" y="0.283203" scaleX="24.869" rotation="90">
+					<s:GradientEntry ratio="0" color="#73A1FF"/>
+					<s:GradientEntry ratio="0.455" color="#557ED4"/>
+					<s:GradientEntry ratio="0.46" color="#436DC5"/>
+					<s:GradientEntry ratio="1" color="#2D53A6"/>
+				</s:LinearGradient>
+			</fill>
+		</Path>
+		<Group x="0.499023" y="0.5" alpha="0.09">
+			<Path winding="nonZero" data="M58.9995 0C60.6519 0 62.0015 1.34961 62.0015 3.00098L62.0015 23.001C62.0015 24.6504 60.6519 26 58.9995 26L3.00098 26C1.34961 26 0 24.6504 0 23.001L0 3.00098C0 1.34961 1.34961 0 3.00098 0L58.9995 0M58.9995 1.5 3.00098 1.5C2.17383 1.5 1.50098 2.17285
+				  1.50098 3.00098L1.50098 23.001C1.50098 23.8262 2.17383 24.499 3.00098 24.499L58.9995 24.499C59.8281 24.499 60.501 23.8262 60.501 23.001L60.501 3.00098C60.501 2.17285 59.8281 1.5 58.9995 1.5L58.9995 1.5Z">
+				<fill>
+					<s:SolidColor color="#FFFFFF"/>
+				</fill>
+			</Path>
+		</Group>
+		<Path x="0.5" y="0.5" winding="nonZero" data="M62 23C62 24.6504 60.6499 26 59 26L3 26C1.34961 26 0 24.6504 0 23L0 3C0 1.34961 1.34961 0 3 0L59 0C60.6499 0 62 1.34961 62 3L62 23Z">
+			<stroke>
+				<s:SolidColorStroke weight="1" caps="none" joints="miter" miterLimit="4" color="#23365C"/>
+			</stroke>
+		</Path>
+	</Group>
+</Skin>

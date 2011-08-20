@@ -5,7 +5,9 @@
 	xmlns:mx="library://ns.adobe.com/flex/mx" 
 	xmlns:rx="http://rx.reflex.io/2010" 
 	xmlns:mc="rxc.mc.*"
-	xmlns:components="com.bit101.components.*"
+	xmlns:components="com.bit101.components.*" 
+	xmlns:yskins="yskins.*" 
+	xmlns="reflex.rxg.*"
 	>
 	
 	<fx:Style>
@@ -27,13 +29,48 @@
 	<rx:layout>
 		<rx:VerticalLayout gap="5" horizontalAlign="center" verticalAlign="center" />
 	</rx:layout>
+	
+	<!-- Raster text -->
+	<RasterText text="Raster text" fontFamily="Verdana" fontSize="32" bold="true">
+		<fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="#ff0000" />
+				<s:GradientEntry color="#00ff00" />
+			</s:LinearGradient>
+		</fill>
+	</RasterText>
 		
-	<mc:PushButton label="Push button" />
-	<mc:PushButton label="Toggle button" toggle="true"/>
+	<!-- pushbuttons -->
+	<rx:HGroup>
+		<mc:PushButton label="Push button" />
+		<mc:PushButton label="Toggle button" toggle="true"/>	
+		<mc:PushButton label="Toggle button" toggle="true" selected="true" enabled="false"/>
+		<mc:PushButton label="Push button">
+			<mc:skin>
+				<yskins:ButtonSkin />
+			</mc:skin>
+		</mc:PushButton>
+	</rx:HGroup>
+	<rx:HGroup>
+		<components:PushButton label="Push button" />
+		<components:PushButton label="Toggle button" toggle="true"/>
+		<components:PushButton label="Toggle button" toggle="true" enabled="false"/>
+	</rx:HGroup>
 	
-	<mc:PushButton label="Toggle button" toggle="true" selected="true" enabled="false"/>
 	
-	<components:PushButton label="Push button" />
-	<components:PushButton label="Toggle button" toggle="true"/>
+	<!-- checkboxes -->
+	<rx:HGroup>
+		<mc:CheckBox label="Checkbox" />
+		<mc:CheckBox label="Checkbox" selected="true"/>
+		<mc:CheckBox label="Checkbox" selected="true" enabled="false"/>
+		<mc:CheckBox label="Checkbox" selected="false" enabled="false"/>
+	</rx:HGroup>
+	<rx:HGroup>
+		<components:CheckBox label="Checkbox" />
+		<components:CheckBox label="Checkbox" selected="true"/>
+		<components:CheckBox label="Checkbox" selected="true" enabled="false"/>
+		<components:CheckBox label="Checkbox" selected="false" enabled="false"/>
+	</rx:HGroup>
+	
 	
 </rx:Application>
