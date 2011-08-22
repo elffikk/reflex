@@ -98,7 +98,7 @@ package reflex.behaviors
 		private function resolveState(mouseState:String):String {
 			if(_skin) {
 				if(!_enabled && _skin.hasState(DISABLED)) {
-					return DISABLED;
+					mouseState = DISABLED;
 				} 
 				if(_selected && _skin.hasState(mouseState + "AndSelected")) {
 					return mouseState + "AndSelected";

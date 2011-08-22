@@ -72,5 +72,19 @@
 		<components:CheckBox label="Checkbox" selected="false" enabled="false"/>
 	</rx:HGroup>
 	
+	<rx:HGroup>
+		<mc:RadioButton label="Male" groupName="sex"/>
+		<mc:RadioButton label="Female" groupName="sex" selected="true"/>
+		<mc:RadioButton label="Male" groupName="sex2" selected="true" enabled="false"/>
+		<mc:RadioButton label="Female" groupName="sex2" selected="false" enabled="false"/>
+	</rx:HGroup>
+	
+	<rx:HGroup>
+		<components:RadioButton label="Male" groupName="sex"/>
+		<components:RadioButton label="Female" groupName="sex" selected="true"/>
+		<components:RadioButton label="Male" groupName="sex2" selected="true" enabled="false"/>
+		<components:RadioButton label="Female" groupName="sex2" selected="false" enabled="false"/>
+	</rx:HGroup>
+	
 	
 </rx:Application>
