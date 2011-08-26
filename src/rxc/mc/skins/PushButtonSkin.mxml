@@ -27,7 +27,7 @@
 		buttonMode="true" 
 		alpha.disabledStates="0.5" 
 		mouseChildren.disabledStates="false" 
-		mouseEnabled.selectedStates="false"
+		mouseEnabled.disabledStates="false"
 		>
 		<!-- background -->
 		<Rect top="0" bottom="0" left="0" right="0">
@@ -61,7 +61,7 @@
 					color="{Style.DROPSHADOW}"
 					blurX="1"
 					blurY="1"
-					inner="false"
+					inner="false"					
 					/>
 			</filters>
 			<filters.down>
@@ -91,8 +91,8 @@
 					/>
 			</filters.selectedStates>
 			<fill>
-				<s:SolidColor color="{Style.BUTTON_FACE}" color.down="{Style.BUTTON_DOWN}"/>
-			</fill>
+				<s:SolidColor color="{Style.BUTTON_FACE}" color.down="{Style.BUTTON_DOWN}" color.selectedStates="{Style.BUTTON_DOWN}"/>
+			</fill>			
 		</Rect>
 		
 		<Label

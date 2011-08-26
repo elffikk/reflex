@@ -7,7 +7,7 @@
 	xmlns:mc="rxc.mc.*"
 	xmlns:components="com.bit101.components.*" 
 	xmlns:yskins="yskins.*" 
-	xmlns="reflex.rxg.*"
+	xmlns="reflex.rxg.*" xmlns:flex4skins="flex4skins.*"
 	>
 	
 	<fx:Style>
@@ -30,6 +30,7 @@
 		<rx:VerticalLayout gap="5" horizontalAlign="center" verticalAlign="center" />
 	</rx:layout>
 	
+	
 	<!-- Raster text -->
 	<RasterText text="Raster text" fontFamily="Verdana" fontSize="32" bold="true">
 		<fill>
@@ -39,17 +40,26 @@
 			</s:LinearGradient>
 		</fill>
 	</RasterText>
+	
 		
 	<!-- pushbuttons -->
 	<rx:HGroup>
 		<mc:PushButton label="Push button" />
 		<mc:PushButton label="Toggle button" toggle="true"/>	
 		<mc:PushButton label="Toggle button" toggle="true" selected="true" enabled="false"/>
+		
+		<mc:PushButton label="Push button">
+			<mc:skin>
+				<flex4skins:ButtonSkin />
+			</mc:skin>
+		</mc:PushButton>
+		
 		<mc:PushButton label="Push button">
 			<mc:skin>
 				<yskins:ButtonSkin />
 			</mc:skin>
 		</mc:PushButton>
+		
 	</rx:HGroup>
 	<rx:HGroup>
 		<components:PushButton label="Push button" />
@@ -72,19 +82,30 @@
 		<components:CheckBox label="Checkbox" selected="false" enabled="false"/>
 	</rx:HGroup>
 	
+	<!-- radiobuttons -->
 	<rx:HGroup>
-		<mc:RadioButton label="Male" groupName="sex"/>
-		<mc:RadioButton label="Female" groupName="sex" selected="true"/>
+		<mc:RadioButton label="Male" groupName="sex" selected="true"/>
+		<mc:RadioButton label="Female" groupName="sex" />
 		<mc:RadioButton label="Male" groupName="sex2" selected="true" enabled="false"/>
 		<mc:RadioButton label="Female" groupName="sex2" selected="false" enabled="false"/>
 	</rx:HGroup>
-	
 	<rx:HGroup>
 		<components:RadioButton label="Male" groupName="sex"/>
 		<components:RadioButton label="Female" groupName="sex" selected="true"/>
 		<components:RadioButton label="Male" groupName="sex2" selected="true" enabled="false"/>
 		<components:RadioButton label="Female" groupName="sex2" selected="false" enabled="false"/>
 	</rx:HGroup>
+	
+	<!-- sliders -->
+	<rx:HGroup>
+		<Label text="{slide1.rawValue} {slide2.value}" />
+	</rx:HGroup>
+	<rx:HGroup>
+		<components:HSlider />
+		<mc:Slider id="slide1" direction="horizontal" />
+		<mc:Slider id="slide2" value="20" />
+	</rx:HGroup>
+	
 	
 	
 </rx:Application>

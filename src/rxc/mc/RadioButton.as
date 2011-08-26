@@ -29,7 +29,7 @@ package rxc.mc
 		}
 		
 		[Bindable(event="groupNameChange")]
-		[Inspectable(name="GroupName", type=String, defaultValue=false)]
+		[Inspectable(name="GroupName", type=String, defaultValue="defaultGroup")]
 		public function get groupName():String {return _groupName; }
 		public function set groupName(value:String):void {
 			DataChange.change(this, "groupName", _groupName, _groupName = value);

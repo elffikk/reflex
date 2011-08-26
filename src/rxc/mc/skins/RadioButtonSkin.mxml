@@ -27,8 +27,11 @@
 		buttonMode="true" 
 		alpha.disabledStates="0.5" 
 		mouseChildren.disabledStates="false" 
-		mouseEnabled.selectedStates="false"
+		mouseEnabled.disabledStates="false"
 		>
+		<layout>
+			<rx:HorizontalLayout gap="3" verticalAlign="center"/>
+		</layout>
 		
 		<!-- checkbox -->
 		<Group width="10" height="10">
@@ -66,7 +69,6 @@
 			color="{Style.LABEL_TEXT}"
 			embed="{Style.embedFonts}"
 			bold="false"
-			left="12"
 			/>
 	</Group>
 </Skin>

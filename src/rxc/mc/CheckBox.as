@@ -26,14 +26,7 @@ package rxc.mc
 		public function get selected():Boolean {return _selected; }
 		public function set selected(value:Boolean):void {
 			DataChange.change(this, "selected", _selected, _selected = value);
-		}
-		
-		[Bindable(event="toggleChange")]
-		[Inspectable(name="Toggle", type=Boolean, defaultValue=false)]
-		public function get toggle():Boolean {return _toggle; }
-		public function set toggle(value:Boolean):void {
-			DataChange.change(this, "toggle", _toggle, _toggle = value);
-		}
+		}		
 		
 		public function CheckBox()
 		{
