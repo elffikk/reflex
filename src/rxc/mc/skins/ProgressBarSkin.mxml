@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns="reflex.rxg.*" 
+	xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:binding="reflex.binding.*" xmlns:behaviors="rxc.mc.behaviors.*"	
+	>
+	
+	<!-- background -->
+	<Rect top="0" bottom="0" left="0" right="0">
+		<filters>
+			<mx:DropShadowFilter
+				angle="45"
+				alpha="1"
+				strength="0.3"
+				quality="1"
+				distance="2"
+				color="#000000"
+				blurX="2"
+				blurY="2"
+				inner="true"
+				/>
+		</filters>
+		<fill>
+			<s:SolidColor color="{Style.BACKGROUND}" />
+		</fill>		
+	</Rect>
+	
+	
+	<!-- progress -->
+	<Rect top="1" bottom="1" left="1" width="{Math.max(0, (target as Object).value / (target as Object).maximum * width-2)}">
+		<filters>
+			<mx:DropShadowFilter
+				angle="45"
+				alpha="1"
+				strength="0.3"
+				quality="1"
+				distance="1"
+				color="{Style.DROPSHADOW}"
+				blurX="1"
+				blurY="1"
+				inner="false"
+				/>
+		</filters>
+		<fill>
+			<s:SolidColor color="{Style.BUTTON_FACE}" />
+		</fill>
+	</Rect>
+	
+</Skin>

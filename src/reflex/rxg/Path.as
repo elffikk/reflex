@@ -13,12 +13,18 @@ package reflex.rxg
 	
 		
 	public class Path extends GraphicBase
-	{
-		private var _data:String;
+	{		
 		private var path:GraphicsPath;
 		
-		public var winding:String;
-				
+		private var _winding:String;
+		[Bindable(event="windingChange")]
+		public function get winding():String { return _winding; }
+		public function set winding(value:String):void {			
+			DataChange.change(this, "winding", _winding, _winding = value);
+			invalidate()			
+		}
+		
+		private var _data:String;
 		[Bindable(event="dataChange")]
 		public function get data():String { return _data; }
 		public function set data(value:String):void {			

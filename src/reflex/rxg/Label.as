@@ -40,7 +40,7 @@ package reflex.rxg
 		{
 			mouseEnabled = false;
 			mouseChildren = false;			
-			this.text = text;
+			_text = text;
 			
 			resolveCommitProperties(this)
 		}
@@ -120,11 +120,12 @@ package reflex.rxg
 		[Commit(properties="text,embed,color,bold,italic,fontFamily,fontSize")]
 		public function onTextRender(event:Event):void
 		{
+			if (!stage) return;
 			while (numChildren > 0) removeChildAt(0)
 							
 			var textElement:TextElement = new TextElement(_text, new ElementFormat(new FontDescription(fontFamily, _bold?FontWeight.BOLD:FontWeight.NORMAL, _italic?FontPosture.ITALIC:FontPosture.NORMAL, _embed?FontLookup.EMBEDDED_CFF:FontLookup.DEVICE), _fontSize, _color));						
 			var block:TextBlock = new TextBlock(textElement);
-			var line:TextLine = block.createTextLine(null, stage.stageWidth);
+			var line:TextLine = block.createTextLine();
 			line.x=0
 			line.y=line.ascent
 			measured.width=line.width

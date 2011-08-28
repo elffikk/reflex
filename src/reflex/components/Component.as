@@ -9,6 +9,7 @@
 	
 	import reflex.behaviors.IBehavior;
 	import reflex.behaviors.IBehavioral;
+	import reflex.binding.Bind;
 	import reflex.binding.DataChange;
 	import reflex.collections.SimpleCollection;
 	import reflex.display.Display;
@@ -144,18 +145,20 @@
 		
 		override public function set width(value:Number):void {
 			super.width = value;
-			//reflex.measurement.setSize(skin, value, height);
-			skin.width = value;
 		}
 		
 		override public function set height(value:Number):void {
 			super.height = value;
-			//reflex.measurement.setSize(skin, width, value);
-			skin.height = value;
 		}
 		
 		override public function setSize(width:Number, height:Number):void {
 			super.setSize(width, height);
+			reflex.measurement.setSize(skin, width, height);
+		}
+		
+		[Commit(properties="width,height")]
+		public function onSizeChange(event:Event):void
+		{
 			reflex.measurement.setSize(skin, width, height);
 		}
 		
