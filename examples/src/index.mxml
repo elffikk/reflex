@@ -25,6 +25,17 @@
 		}
 	</fx:Style>
 	
+	<fx:Script>
+		<![CDATA[
+			
+			public function getFlashVersion():String
+			{
+				return Capabilities.version.split(" ")[1];
+			}
+			
+		]]>
+	</fx:Script>
+	
 	
 	<rx:layout>
 		<rx:VerticalLayout gap="5" horizontalAlign="center" verticalAlign="center" />
@@ -32,7 +43,7 @@
 	
 	
 	<!-- Raster text -->
-	<RasterText text="Raster text" fontFamily="Verdana" fontSize="32" bold="true">
+	<RasterText id="rasterText" fontFamily="Verdana" fontSize="20" bold="true" text="Flash version: {getFlashVersion()}">
 		<fill>
 			<s:LinearGradient rotation="90">
 				<s:GradientEntry color="#ff0000" />
@@ -84,8 +95,8 @@
 	
 	<!-- radiobuttons -->
 	<rx:HGroup>
-		<mc:RadioButton label="Male" groupName="sex" selected="true"/>
-		<mc:RadioButton label="Female" groupName="sex" />
+		<mc:RadioButton label="Male" groupName="sex" />
+		<mc:RadioButton label="Female" groupName="sex" selected="true"/>
 		<mc:RadioButton label="Male" groupName="sex2" selected="true" enabled="false"/>
 		<mc:RadioButton label="Female" groupName="sex2" selected="false" enabled="false"/>
 	</rx:HGroup>
@@ -96,15 +107,22 @@
 		<components:RadioButton label="Female" groupName="sex2" selected="false" enabled="false"/>
 	</rx:HGroup>
 	
-	<!-- sliders -->
-	<rx:HGroup>
-		<Label text="{slide1.rawValue} {slide2.value}" />
+	<!-- progress bar -->	
+	<rx:HGroup>		
+		<components:ProgressBar value="0.9"/>
+		<mc:ProgressBar value="0.9"/>
 	</rx:HGroup>
-	<rx:HGroup>
-		<components:HSlider />
-		<mc:Slider id="slide1" direction="horizontal" />
-		<mc:Slider id="slide2" value="20" />
+	
+	<!-- sliders -->	
+	<rx:HGroup>		
+		<components:VSlider value="5" />
+		<mc:VSlider value="5" />
+		<rx:VGroup>
+			<components:HSlider value="15"/>		
+			<mc:HSlider id="hslider" value="15"/>
+		</rx:VGroup>
 	</rx:HGroup>
+	
 	
 	
 	
