@@ -23,8 +23,8 @@
 						quality="1"
 						distance="2"
 						color="#000000"
-						blurX="1"
-						blurY="1"
+						blurX="2"
+						blurY="2"
 						inner="true"
 						/>
 				</filters>
@@ -37,7 +37,33 @@
 	
 	
 	<!-- handle -->
-	<rx:Component id="thumb" buttonMode="true">
+	<rx:Component id="thumb1" buttonMode="true">
+		<rx:behaviors>
+			<behaviors:ButtonEventsBehavior />
+		</rx:behaviors>
+		<rx:skin>
+			<Rect x="1" y="1" width="{Math.min(width, height)-2}" height="{Math.min(width, height)-2}">
+				<filters>
+					<mx:DropShadowFilter
+						angle="45"
+						alpha="1"
+						strength="0.3"
+						quality="1"
+						distance="1"
+						color="{Style.DROPSHADOW}"
+						blurX="1"
+						blurY="1"
+						inner="false"
+						/>
+				</filters>
+				<fill>
+					<s:SolidColor color="{Style.BUTTON_FACE}" />
+				</fill>
+			</Rect>
+		</rx:skin>
+	</rx:Component>
+	
+	<rx:Component id="thumb2" buttonMode="true">
 		<rx:behaviors>
 			<behaviors:ButtonEventsBehavior />
 		</rx:behaviors>

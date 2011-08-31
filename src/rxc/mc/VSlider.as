@@ -10,7 +10,6 @@ package rxc.mc
 			direction = Slider.VERTICAL
 			width = 10
 			height = 100
-			dispatchEvent(new Event("valueChange"))//to position thumb correctly
 		}
 	}
 }

@@ -5,24 +5,29 @@ package rxc.mc
 	import reflex.binding.DataChange;
 	import reflex.components.Component;
 	
-	import rxc.mc.behaviors.SliderBehavior;
-	import rxc.mc.skins.SliderSkin;
+	import rxc.mc.behaviors.RangeSliderBehavior;
+	import rxc.mc.skins.RangeSliderSkin;
 	
-	[Event(name="valueChange", type="flash.events.Event")]
-	public class Slider extends Component
+	public class RangeSlider extends Component
 	{
+		
 		public static const HORIZONTAL:String = "horizontal";
 		public static const VERTICAL:String = "vertical";
 		
-		private var _value:Number=0;
-		[Bindable(event="valueChange")]
-		public function get value():Number { return Math.round(_value / _tick) * _tick; }
-		public function set value(v:Number):void {
-			DataChange.change(this, "value", _value, _value = v);
+		private var _lowValue:Number=0;
+		[Bindable(event="lowValueChange")]
+		public function get lowValue():Number { return Math.round(_lowValue / _tick) * _tick; }
+		public function set lowValue(v:Number):void {
+			DataChange.change(this, "lowValue", _lowValue, _lowValue = v);
 		}
 		
-		[Bindable(event="valueChange")]
-		public function get rawValue():Number{return _value;}
+		private var _highValue:Number=100;
+		[Bindable(event="highValueChange")]
+		public function get highValue():Number { return Math.round(_highValue / _tick) * _tick; }
+		public function set highValue(v:Number):void {
+			DataChange.change(this, "highValue", _highValue, _highValue = v);
+		}
+		
 		
 		private var _minimum:Number=0;
 		[Bindable(event="minimumChange")]
@@ -41,47 +46,24 @@ package rxc.mc
 		private var _tick:Number=0.01;
 		[Bindable(event="tickChange")]
 		public function get tick():Number { return _tick; }
-		public function set tick(v:Number):void {
+		public function set tick(value:Number):void {
 			DataChange.change(this, "tick", _tick, _tick = value);
 		}
 		
-		private var _direction:String="horizontal";
+		private var _direction:String=HORIZONTAL;
 		[Bindable(event="directionChange")]
 		public function get direction():String { return _direction; }
 		public function set direction(value:String):void {
 			DataChange.change(this, "direction", _direction, _direction = value);
 		}
 		
-		[Commit(properties="value,minimum,maximum")]
-		public function onValueChange(event:Event):void
-		{
-			correctValue()
-		}
-		
-		/**
-		 * Utils
-		 */
-		protected function correctValue():void
-		{
-			if(_maximum > _minimum)
-			{
-				_value = Math.min(_value, _maximum);
-				_value = Math.max(_value, _minimum);
-			}
-			else
-			{
-				_value = Math.max(_value, _maximum);
-				_value = Math.min(_value, _minimum);
-			}
-		}
-		
-		
-		public function Slider()
+		public function RangeSlider()
 		{
 			super();
-			this.behaviors = new SliderBehavior(this)
-			this.skin = new SliderSkin()
-			this.setSize(100, 10)
+			this.skin = new RangeSliderSkin()
+			this.behaviors = new RangeSliderBehavior(this)
+			width = 100
+			height = 10
 		}
 	}
 }

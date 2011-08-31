@@ -6,7 +6,7 @@ package rxc.mc
 		{
 			super();
 			direction = Slider.HORIZONTAL
-			width = 100
+			width = 110
 			height = 10
 		}
 	}

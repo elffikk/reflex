@@ -9,6 +9,7 @@ package rxc.mc.behaviors
 	
 	import reflex.behaviors.Behavior;
 	import reflex.binding.DataChange;
+	import reflex.metadata.resolveCommitProperties;
 	
 	import rxc.mc.Slider;
 	
@@ -72,12 +73,14 @@ package rxc.mc.behaviors
 		public function SliderBehavior(target:IEventDispatcher=null)
 		{
 			super(target);
+			resolveCommitProperties(this)
 		}
 		
 		
 		/**
 		 * Event handlers
 		 */
+		
 		[EventListener(event="press", target="thumb")]
 		public function onThumbDragStart(event:Event):void
 		{
@@ -107,43 +110,28 @@ package rxc.mc.behaviors
 		[EventListener(event="click", target="track")]
 		public function onTrackClick(event:MouseEvent):void
 		{			
-			var w:Number = (target as Object).width
-			var h:Number = (target as Object).height
-			var ratio:Number;
-			if(_direction == Slider.HORIZONTAL)
-			{
-				ratio = event.localX  / (track.width - thumb.width-2)	
-			}
-			else
-			{
-				ratio = event.localY  / (track.height - thumb.height-2)
-			}
-			ratio = Math.max(0, Math.min(1, ratio))
-			value = _minimum + ratio * (_maximum - _minimum)
+			updateValue(event.localX, event.localY)
 		}
 		
 		[EventListener(event="drag", target="thumb")]
 		public function oDrag(event:Event):void
 		{			
-			var w:Number = (target as Object).width
-			var h:Number = (target as Object).height
-			var ratio:Number;
-			if(_direction == Slider.HORIZONTAL)
-			{
-				ratio = thumb.x  / (track.width - thumb.width-2)	
-			}
-			else
-			{
-				ratio = thumb.y  / (track.height - thumb.height-2)
-			}
-			ratio = Math.max(0, Math.min(1, ratio))
-			value = _minimum + ratio * (_maximum - _minimum)
+			updateValue(thumb.x, thumb.y)
 		}
 		
-		[EventListener(event="valueChange", target="target")]
+		[Commit(properties="value,minimum,maximum,width,height",target="target")]
 		public function onValueChange(event:Event):void
 		{
 			if (_dragging) return;
+			positionHandle()
+		}
+		
+		/**
+		 * Private
+		 */
+		 
+		protected function positionHandle():void
+		{
 			var w:Number = (target as Object).width
 			var h:Number = (target as Object).height
 			var range:Number;
@@ -157,6 +145,23 @@ package rxc.mc.behaviors
 				range = h - w;
 				thumb.y = h - w - (_value - _minimum) / (_maximum - _minimum) * range;
 			}
+		}
+		
+		protected function updateValue(_x:Number, _y:Number):void
+		{
+			var w:Number = (target as Object).width
+			var h:Number = (target as Object).height
+			var ratio:Number;
+			if(_direction == Slider.HORIZONTAL)
+			{
+				ratio = (_x - track.x)  / (track.width - thumb.width-2)	
+			}
+			else
+			{
+				ratio = 1 - (_y - track.y)  / (track.height - thumb.height-2)
+			}
+			ratio = Math.max(0, Math.min(1, ratio))
+			value = _minimum + ratio * (_maximum - _minimum)
 		}
 		
 	}

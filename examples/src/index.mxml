@@ -27,10 +27,17 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import aze.motion.eaze;
+			
 			
 			public function getFlashVersion():String
 			{
 				return Capabilities.version.split(" ")[1];
+			}
+			
+			protected function pushbutton1_clickHandler(event:MouseEvent):void
+			{
+				eaze(hsFontSize).to(3, {value:32})				
 			}
 			
 		]]>
@@ -41,9 +48,13 @@
 		<rx:VerticalLayout gap="5" horizontalAlign="center" verticalAlign="center" />
 	</rx:layout>
 	
+	<rx:HGroup>
+		<mc:PushButton label="Animate" click="pushbutton1_clickHandler(event)"/>
+		<mc:HSlider id="hsFontSize" value="15" width="200"/>		
+	</rx:HGroup>
 	
 	<!-- Raster text -->
-	<RasterText id="rasterText" fontFamily="Verdana" fontSize="20" bold="true" text="Flash version: {getFlashVersion()}">
+	<RasterText id="rasterText" fontFamily="Verdana" fontSize="{hsFontSize.value}" bold="true" text="Flash version: {getFlashVersion()}">
 		<fill>
 			<s:LinearGradient rotation="90">
 				<s:GradientEntry color="#ff0000" />
@@ -109,18 +120,30 @@
 	
 	<!-- progress bar -->	
 	<rx:HGroup>		
-		<components:ProgressBar value="0.9"/>
-		<mc:ProgressBar value="0.9"/>
+		<components:ProgressBar value="0.9" width="200"/>
+		<mc:ProgressBar value="0.9" width="200"/>
 	</rx:HGroup>
 	
 	<!-- sliders -->	
-	<rx:HGroup>		
-		<components:VSlider value="5" />
+	<rx:HGroup>
+		<Rect width="100" />
+		<Label text="{rsH.lowValue} - {rsH.highValue}" />
+	</rx:HGroup>
+	
+	<rx:HGroup>
+		<components:HRangeSlider lowValue="10" highValue="50" />
+		<mc:HRangeSlider id="rsH" lowValue="10" highValue="50" />		
+	</rx:HGroup>
+	<rx:HGroup>
+		<components:HSlider id="sl1" value="15" width="200"/>		
+		<mc:HSlider id="sl2" value="15" width="200"/>
+	</rx:HGroup>
+	
+	<rx:HGroup>
 		<mc:VSlider value="5" />
-		<rx:VGroup>
-			<components:HSlider value="15"/>		
-			<mc:HSlider id="hslider" value="15"/>
-		</rx:VGroup>
+		<mc:VRangeSlider />
+		<components:VSlider value="5" />
+		<components:VRangeSlider />		
 	</rx:HGroup>
 	
 	
