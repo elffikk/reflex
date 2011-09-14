@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns="reflex.rxg.*" 
+	xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:mc="rxc.mc.*" 
+	xmlns:skins="rxc.mc.skins.*" 
+	xmlns:behaviors="rxc.mc.behaviors.*"	
+	>
+    
+   	<mc:PushButton id="track" top="0" bottom="0" left="0" right="0">
+		<mc:skin>
+			<skins:HSliderTrackSkin />
+		</mc:skin>
+	</mc:PushButton>
+	
+	<mc:PushButton 
+		id="thumb" 
+		width="{Math.min(width, height)}" 
+		height="{Math.min(width, height)}"
+		buttonMode="true"
+		>
+		<mc:skin>
+			<skins:HSliderThumbSkin />
+		</mc:skin>
+		<mc:behaviors>
+			<behaviors:ButtonEventsBehavior />
+		</mc:behaviors>
+	</mc:PushButton>
+	
+</Skin>

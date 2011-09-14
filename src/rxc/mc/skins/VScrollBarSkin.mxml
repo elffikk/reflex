@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns="reflex.rxg.*" 
+	xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:binding="reflex.binding.*" 
+	xmlns:behaviors="rxc.mc.behaviors.*" 
+	xmlns:mc="rxc.mc.*" 
+	xmlns:skins="rxc.mc.skins.*"	
+	>
+	
+	<fx:Metadata>
+		[HostComponent("rxc.mc.ScrollBar")]
+	</fx:Metadata>
+	
+	<mc:PushButtonContainer 
+		id="decrementButton"
+		left="0" 
+		right="0"
+		height="{hostComponent.width}"
+		>
+		<mc:skin>
+			<skins:ScrollBarUpButtonSkin />
+		</mc:skin>
+		<mc:behaviors>
+			<behaviors:ButtonEventsBehavior />
+		</mc:behaviors>
+	</mc:PushButtonContainer>
+	
+	<mc:PushButton 
+		id="track" 
+		top="{incrementButton.height}"
+		bottom="{decrementButton.height}"
+		left="0"
+		right="0"
+		>
+		<mc:skin>
+			<skins:HScrollBarTrackSkin />
+		</mc:skin>
+		<mc:behaviors>
+			<behaviors:ButtonEventsBehavior />
+		</mc:behaviors>
+	</mc:PushButton>
+	
+	
+	<!-- handle -->
+	<mc:PushButton 
+		id="thumb"		
+		left="0" 
+		right="0"
+		buttonMode="true"
+		>
+		<mc:skin>
+			<skins:HScrollBarThumbSkin />
+		</mc:skin>
+		<mc:behaviors>
+			<behaviors:ButtonEventsBehavior />
+		</mc:behaviors>
+	</mc:PushButton>
+	
+	<mc:PushButtonContainer 
+		id="incrementButton"
+		left="0"
+		right="0"		 
+		bottom="0"
+		height="{hostComponent.width}"
+		>
+		<mc:skin>
+			<skins:ScrollBarDownButtonSkin />
+		</mc:skin>
+		<mc:behaviors>
+			<behaviors:ButtonEventsBehavior />
+		</mc:behaviors>
+	</mc:PushButtonContainer>
+	
+</Skin>

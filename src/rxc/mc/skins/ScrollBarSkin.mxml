@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Skin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	xmlns="reflex.rxg.*" 
+	xmlns:rx="http://rx.reflex.io/2010" 
+	xmlns:binding="reflex.binding.*" 
+	xmlns:behaviors="rxc.mc.behaviors.*" 
+	xmlns:mc="rxc.mc.*"	
+	>
+	
+	<fx:Declarations>
+		<binding:Bind source="target.direction" target="currentState" />
+	</fx:Declarations>
+	
+	<fx:Metadata>
+		[HostComponent("rxc.mc.ScrollBar")]
+	</fx:Metadata>
+	
+	<states>
+		<s:State name="horizontal" />
+		<s:State name="vertical" />
+	</states>
+	
+	<Group>
+		<layout>
+			<rx:HorizontalLayout gap="0" />
+		</layout>
+		<layout.vertical>
+			<rx:VerticalLayout gap="0" />
+		</layout.vertical>
+		
+		<mc:PushButtonContainer id="decrementButton">
+			<Path 
+				data="M 3 5 L 6 7 6 3z"
+				data.vertical="M 5 3 L 7 6 3 6z" 
+				width="{Math.min(width, height)}" 
+				height="{Math.min(width, height)}"
+				>
+				<fill>
+					<s:SolidColor color="{Style.DROPSHADOW}" alpha="0.5"/>
+				</fill>
+			</Path>
+		</mc:PushButtonContainer>
+		
+		<Group 
+			width="{hostComponent.width-incrementButton.width-decrementButton.width}" 
+			width.vertical="{hostComponent.width}"
+			height="{hostComponent.height}"
+			height.vertical="{hostComponent.height-incrementButton.height-decrementButton.height}"
+			>
+			<!-- background -->
+			<rx:Component 
+				id="track" 
+				width="{hostComponent.width-incrementButton.width-decrementButton.width}" 
+				width.vertical="{hostComponent.width}"
+				height="{hostComponent.height}"
+				height.vertical="{hostComponent.height-incrementButton.height-decrementButton.height}"
+				>
+				<rx:behaviors>
+					<behaviors:ButtonEventsBehavior />
+				</rx:behaviors>
+				<rx:skin>
+					<Rect
+						width="{hostComponent.width-incrementButton.width-decrementButton.width}" 
+						width.vertical="{hostComponent.width}"
+						height="{hostComponent.height}"
+						height.vertical="{hostComponent.height-incrementButton.height-decrementButton.height}"
+						>
+						<filters>
+							<mx:DropShadowFilter
+								angle="45"
+								alpha="1"
+								strength="0.3"
+								quality="1"
+								distance="2"
+								color="#000000"
+								blurX="1"
+								blurY="1"
+								inner="true"
+								/>
+						</filters>
+						<fill>
+							<s:SolidColor color="{Style.BACKGROUND}" />
+						</fill>		
+					</Rect>
+				</rx:skin>
+			</rx:Component>
+			
+			
+			<!-- handle -->
+			<rx:Component id="thumb" buttonMode="true">
+				<rx:behaviors>
+					<behaviors:ButtonEventsBehavior />
+				</rx:behaviors>
+				<rx:skin>
+					<Rect x="1" y="1" width="{Math.min(width, height)-2}" height="{Math.min(width, height)-2}">
+						<filters>
+							<mx:DropShadowFilter
+								angle="45"
+								alpha="1"
+								strength="0.3"
+								quality="1"
+								distance="1"
+								color="{Style.DROPSHADOW}"
+								blurX="1"
+								blurY="1"
+								inner="false"
+								/>
+						</filters>
+						<fill>
+							<s:SolidColor color="{Style.BUTTON_FACE}" />
+						</fill>
+					</Rect>
+				</rx:skin>
+			</rx:Component>
+		</Group>
+		
+		<mc:PushButtonContainer id="incrementButton">
+			<Path
+				data="M 7 5 L 4 7 4 3z"
+				data.vertical="M 5 7 L 7 4 3 4z" 
+				width="{Math.min(width, height)}" 
+				height="{Math.min(width, height)}"
+				>
+				<fill>
+					<s:SolidColor color="{Style.DROPSHADOW}" alpha="0.5"/>
+				</fill>
+			</Path>
+		</mc:PushButtonContainer>
+	</Group>
+	
+</Skin>
