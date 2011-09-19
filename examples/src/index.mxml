@@ -7,7 +7,11 @@
 	xmlns:mc="rxc.mc.*"
 	xmlns:components="com.bit101.components.*" 
 	xmlns:yskins="yskins.*" 
-	xmlns="reflex.rxg.*" xmlns:flex4skins="flex4skins.*"
+	xmlns="reflex.rxg.*" 
+	xmlns:flex4skins="flex4skins.*" 
+	xmlns:skins="rxc.mc.skins.*" 
+	xmlns:madcomponents="com.danielfreeman.madcomponents.*"
+	addedToStage="onInit()"
 	>
 	
 	<fx:Style>
@@ -29,6 +33,8 @@
 		<![CDATA[
 			import aze.motion.eaze;
 			
+			import com.danielfreeman.madcomponents.UIButton;
+			
 			
 			public function getFlashVersion():String
 			{
@@ -40,6 +46,14 @@
 				eaze(hsFontSize).to(3, {value:32})				
 			}
 			
+			protected function onInit():void
+			{
+				
+				var btn:UIButton = new UIButton(madComponents,0,0,'Mad button',0xff0000,new Vector.<uint>([0x00ff00, 0x0000ff]))				
+				madComponents.content = [btn]
+				
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -48,6 +62,50 @@
 		<rx:VerticalLayout gap="5" horizontalAlign="center" verticalAlign="center" />
 	</rx:layout>
 	
+	
+	<rx:VGroup id="madComponents">
+		
+	</rx:VGroup>
+	
+	
+	<!--
+	<Label text="{btn1.width} {btn1.height}" />
+	-->
+	<rx:HGroup>
+		<mc:PushButton id="btn1">
+			<mc:skin>
+				<skins:ScrollBarLeftButtonSkin />
+			</mc:skin>
+		</mc:PushButton>
+		<mc:PushButton>
+			<mc:skin>
+				<skins:ScrollBarUpButtonSkin />
+			</mc:skin>
+		</mc:PushButton>
+		<mc:PushButton>
+			<mc:skin>
+				<skins:ScrollBarRightButtonSkin />
+			</mc:skin>
+		</mc:PushButton>
+		<mc:PushButton>
+			<mc:skin>
+				<skins:ScrollBarDownButtonSkin />
+			</mc:skin>
+		</mc:PushButton>
+		<mc:PushButton width="100" height="10">
+			<mc:skin>
+				<skins:HScrollBarTrackSkin />
+			</mc:skin>
+		</mc:PushButton>
+		<mc:PushButton width="10" height="10">
+			<mc:skin>
+				<skins:HScrollBarThumbSkin />
+			</mc:skin>
+		</mc:PushButton>
+	</rx:HGroup>
+	
+	
+		
 	<rx:HGroup>
 		<mc:PushButton label="Animate" click="pushbutton1_clickHandler(event)"/>
 		<mc:HSlider id="hsFontSize" value="15" width="200"/>		
@@ -66,6 +124,18 @@
 		
 	<!-- pushbuttons -->
 	<rx:HGroup>
+		
+		<mc:PushButtonContainer>
+			<Image source="@Embed('assets/icons/twitter.png')" top="5" bottom="5" left="15" right="15"/>
+		</mc:PushButtonContainer>
+		
+		<mc:PushButtonContainer>
+			<rx:HGroup verticalAlign="middle" gap="3" top="5" bottom="5" left="5" right="5">
+				<Image source="@Embed('assets/icons/twitter.png')" top="5" bottom="5" left="15" right="15"/>
+				<Label text="Twitter" fontFamily="PF Ronda Seven" fontSize="8" embed="true" bold="true"/>
+			</rx:HGroup>			
+		</mc:PushButtonContainer>
+		
 		<mc:PushButton label="Push button" />
 		<mc:PushButton label="Toggle button" toggle="true"/>	
 		<mc:PushButton label="Toggle button" toggle="true" selected="true" enabled="false"/>
@@ -146,7 +216,22 @@
 		<components:VRangeSlider />		
 	</rx:HGroup>
 	
+	<!-- ScrollBars -->
+	<Label text="{hs.value} {hs.minimum} {hs.maximum} {hs.stepSize} {hs.pageSize} {hs.thumbPercent}" />
+	<Label text="{vs.value} {vs.minimum} {vs.maximum} {vs.stepSize} {vs.pageSize} {vs.thumbPercent}" />
+	<rx:HGroup>
+		<components:HScrollBar id="hScrollBar" minimum="0" maximum="100" pageSize="1" value="10" addedToStage="hScrollBar.setThumbPercent(0.1)"/>
+		<mc:HScrollBar id="hs" thumbPercent="0.03"/>
+		<mc:VScrollBar id="vs" value="10" minimum="0" maximum="100" thumbPercent="0.2"/>
+	</rx:HGroup>
 	
-	
+	<!-- InputText -->
+	<rx:HGroup>
+		<components:InputText text="123"/>
+		<components:InputText text="123" password="true"/>
+		<mc:InputText text="1234" />
+		<mc:InputText text="1234" password="true"/>
+		<mc:InputText text="1234" enabled="false"/>
+	</rx:HGroup>
 	
 </rx:Application>
